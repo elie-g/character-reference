@@ -23,3 +23,4 @@
 - [ ] in character details modal, add left and right arrow buttons (prev, next character)
 - [ ] in character details modal, allow to directly type in a character
 - [ ] Use/make better loading screen
+- [ ] tests

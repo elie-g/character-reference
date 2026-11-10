@@ -21,10 +21,10 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+*.zip
 
 public/**/*.txt
+public/ucd/
 
 .env*
-!.env
-!.env.development
 !.env.example
