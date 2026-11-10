@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@layer reset, theme, base, components, utilities;
+@import './stylesheets/reset.css';
+@import 'tailwindcss';
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/preflight.css" layer(base);
+@import "tailwindcss/utilities.css" layer(utilities);
+@import "./stylesheets/flowbite-theme.css";
+@plugin "flowbite/plugin";
+
+@custom-variant dark ( &:where(.dark, .dark *) );
+
+/**@import '@/style/refresh-spinner.scss';/**/
+
+@source "../node_modules/flowbite";
+@source "../node_modules/flowbite-vue";
+@source "./";
+
+
+:root {
+  @apply bg-neutral-primary text-body font-sans;
+  @apply scrollbar-track-neutral-primary-medium;
+  @apply scrollbar-thumb-body-subtle;
+  @apply scrollbar-thin;
+}
+
+
+.tooltip[data-popper-placement^='left'] > .tooltip-arrow {
+  right: 0;
+}

@@ -1,0 +1,25 @@
+# TODOs
+
+- [ ] save filters
+- [ ] reset filters button
+- [ ] in search filter, replace loop by dropdown list to select search fields (instead of loop, show number of search fields selected)
+- [ ] Sorting: add a speed dial left for sort fields
+- [ ] Add search field to font selection dropdown
+- [ ] Move font selection outside filters (e.g. to an options/config drawer)
+- [ ] Add copy button on each character
+- [ ] Add more character details :
+  - [ ] `char.name`
+  - [ ] `char.character`
+  - [x] `char.code`
+  - [x] `char.codePoints`
+  - [ ] `char.decimalDigitValue`
+  - [ ] `char.digitValue`
+  - [ ] `char.numericValue`
+  - [ ] `char.mirrored`
+  - [ ] `char.alias`
+  - [ ] `char.uppercaseCharacter`
+  - [ ] `char.lowercaseCharacter`
+  - [ ] `char.titlecaseCharacter`
+- [ ] in character details modal, add left and right arrow buttons (prev, next character)
+- [ ] in character details modal, allow to directly type in a character
+- [ ] Use/make better loading screen

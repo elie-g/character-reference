@@ -1,0 +1,5 @@
+
+@layer reset {
+  *:focus-visible { outline: none }
+  * { scrollbar-width: inherit }
+}
