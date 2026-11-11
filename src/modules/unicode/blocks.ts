@@ -9,7 +9,7 @@ export type UnicodeCharacterBlock = {
 const commentOrEmptyLineRegex = /^\s*#|^\s*$/
 const blockRegex = /^([a-fA-F0-9]+)\.\.([a-fA-F0-9]+);\s*(.*)$/;
 
-export const unicodeCharacterBlocksPromise: Promise<ReadonlyArray<UnicodeCharacterBlock>> = fetch(new URL('Blocks.txt', UNICODE_BASE_URL))
+export const unicodeCharacterBlocksPromise: Promise<ReadonlyArray<UnicodeCharacterBlock>> = fetch(new URL('./Blocks.txt', UNICODE_BASE_URL))
   .then(resp => resp.text())
   .then(raw => raw.split(/\r?\n/g)
     .filter(ln => !commentOrEmptyLineRegex.test(ln))

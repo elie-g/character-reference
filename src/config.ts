@@ -1,7 +1,7 @@
 
 
 function parseBaseUrl(baseUrl: string): string {
-  const url = new URL(baseUrl, location.origin);
+  const url = new URL(baseUrl, location.href);
   if (!url.pathname.endsWith('/'))
     url.pathname += '/';
   return url.href;
