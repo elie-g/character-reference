@@ -20,10 +20,10 @@ export default {
 </script>
 
 <template>
-  <div data-dial-init class="fixed end-6 bottom-6 group">
+  <div data-dial-init class="fixed inset-e-6 bottom-6 group">
     <div
       id="speed-dial-menu"
-      class="flex flex-col items-center hidden space-y-2"
+      class="hidden flex-col items-center space-y-2 group-hover:flex"
     >
 
       <!-- Theme -->
@@ -66,7 +66,7 @@ export default {
         Options & Filters
         <div class="tooltip-arrow" data-popper-arrow></div>
       </div>
-    
+
     </div>
     <button
       type="button"

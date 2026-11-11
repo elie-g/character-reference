@@ -122,8 +122,11 @@ export class UnicodeCharacter {
 ///////////////////////////////////////////////////////////////////////
 
 function fetchCharacters(): Promise<ReadonlyArray<UnicodeRawCharacter>> {
-  return fetch(new URL(`./UnicodeData.txt`, UNICODE_BASE_URL))
-    .then((resp) => resp.text())
+  const url = new URL(`./UnicodeData.txt`, UNICODE_BASE_URL);
+  return fetch(url, {
+    mode: url.origin === location.origin ? 'same-origin' : 'cors',
+    method: 'GET',
+  }).then((resp) => resp.text())
     .then((csv: string): UnicodeRawCharacter[] => {
       return csv.split(/\r?\n/g)
         .map((ln: string): string[] => ln.split(';'))
