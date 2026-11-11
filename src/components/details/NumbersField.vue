@@ -126,9 +126,9 @@ export default defineComponent({
       <button
         type="button"
         @click="hex = !hex"
-        class="inline-flex items-center ps-3 pe-1.5 font-bold text-sm text-body-subtle bg-neutral-secondary-medium border rounded-e-0 border-default-medium border-e-0 rounded-s-base cursor-pointer hover:text-body hover:bg-neutral-secondary-strong focus:ring-0"
+        class="inline-flex items-center ps-3 pe-1.5 font-bold text-sm text-body-subtle bg-neutral-secondary-soft border rounded-e-0 border-default-medium border-e-0 rounded-s-base cursor-pointer hover:text-body hover:bg-neutral-secondary-strong focus:ring-0"
       >
-        <small style="line-height:normal">
+        <small style="line-height:normal; width:2ch">
           {{ hex ? '0x' : '10' }}
         </small>
       </button>
@@ -150,7 +150,7 @@ export default defineComponent({
           >
             <span class="relative">
               <span class="transition-opacity duration-300 opacity-100 group-[.success]:opacity-0">
-                <font-awesome-icon icon="fa-clipboard-list" />
+                <font-awesome-icon icon="fa-copy" />
               </span>
               <span class="text-fg-success-strong absolute z-10 top-0 left-0 transition-opacity duration-300 opacity-0 group-[.success]:opacity-100">
                 <font-awesome-icon icon="fa-clipboard-check" />
@@ -162,7 +162,7 @@ export default defineComponent({
           ref="tooltip"
           :id="`${localId}-input-${idx}-copy-tooltip`"
           role="tooltip"
-          class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-dark rounded-base shadow-xs opacity-0 tooltip [.success]:bg-success [.success]:color-fg-success"
+          class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-body transition-opacity duration-300 bg-neutral-secondary-strong rounded-base shadow-xs opacity-0 tooltip [.success]:bg-success [.success]:color-fg-success"
         >
           <span>Copy to clipboard</span>
           <span class="hidden">Copied!</span>

@@ -13,7 +13,31 @@ export default defineConfig({
   publicDir: 'public',
   build: {
     outDir: 'dist',
-    emptyOutDir: true
+    emptyOutDir: true,
+    rolldownOptions: {
+      output: {
+        codeSplitting: {
+          groups: [{
+            name: 'vue-vendor',
+            test: /node_modules[\\/]@?vue(use)?/,
+            priority: 20,
+          }, {
+            name: 'font-vendor',
+            test: /node_modules[\\/]@?fortawesome/,
+            priority: 15
+          }, {
+            name: 'vendor',
+            test: /node_modules/,
+            priority: 10,
+          }, {
+            name: 'common',
+            minShareCount: 2,
+            minSize: 10000,
+            priority: 5,
+          },]
+        }
+      }
+    }
   },
   resolve: {
     alias: {

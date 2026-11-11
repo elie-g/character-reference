@@ -59,6 +59,9 @@ export default defineComponent({
       if (!this.canHover) {
         this.dial.toggle();
       }
+    },
+    toggleTheme() {
+      this.dark = !this.dark;
     }
   }
 })
@@ -73,20 +76,15 @@ export default defineComponent({
     >
 
       <!-- Theme -->
-      <input
-        type="checkbox"
-        id="theme-checkbox"
-        v-model="dark"
-        class="hidden peer"
-      />
-      <label
-        for="theme-checkbox"
+      <button
+        type="button"
+        @click="toggleTheme"
         data-tooltip-target="tooltip-theme"
         data-tooltip-placement="left"
-        class="flex justify-center items-center size-10 cursor-pointer text-body hover:text-heading bg-neutral-primary-soft rounded-full border border-default shadow-xs hover:bg-neutral-secondary-medium hover:border-default-medium focus:ring-4 focus:ring-neutral-secondary-soft focus:outline-none peer-checked:border-brand-subtle peer-checked:bg-brand-softer peer-checked:text-fg-brand-strong peer-checked:hover:bg-brand-softer"
+        class="flex justify-center items-center w-10 h-10 cursor-pointer rounded-full border border-default shadow-xs bg-dark text-light dark:bg-light dark:text-dark hover:text-heading hover:bg-neutral-secondary-medium hover:border-default-medium focus:ring-4 focus:ring-neutral-secondary-soft focus:outline-none"
       >
         <font-awesome-icon icon="circle-half-stroke" />
-      </label>
+      </button>
       <div
         id="tooltip-theme"
         role="tooltip"

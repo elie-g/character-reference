@@ -23,7 +23,7 @@
   --radius-xs: 4px;
   --radius-sm: 6px;
   --radius: 8px;
-  --radius-base: 12px; 
+  --radius-base: 12px;
   --radius-lg: 16px;
 
   /* BORDER WIDTH VARIABLES */
@@ -95,9 +95,9 @@
   --color-warning: var(--color-orange-500);
   --color-warning-medium: var(--color-orange-100);
   --color-warning-strong: var(--color-orange-700);
-  --color-dark-soft: var(--color-gray-800);
-  --color-dark: var(--color-gray-800);
-  --color-dark-strong: var(--color-gray-900);
+  --color-dark-soft: var(--color-slate-700);
+  --color-dark: var(--color-slate-800);
+  --color-dark-strong: var(--color-slate-900);
   --color-disabled: var(--color-gray-100);
   --color-purple: var(--color-purple-500);
   --color-sky: var(--color-sky-500);
@@ -113,9 +113,9 @@
   --color-buffer-medium: var(--color-white);
   --color-buffer-strong: var(--color-white);
   --color-muted: var(--color-gray-50);
-  --color-light-subtle: var(--color-gray-100);
-  --color-light: var(--color-gray-100);
-  --color-light-medium: var(--color-gray-100);
+  --color-light-subtle: var(--color-slate-300);
+  --color-light: var(--color-slate-200);
+  --color-light-medium: var(--color-slate-100);
   --color-default-subtle: var(--color-gray-100);
   --color-default: var(--color-gray-200);
   --color-default-medium: var(--color-gray-300);
@@ -156,7 +156,7 @@
   --color-fg-indigo: var(--color-indigo-500);
   --color-fg-pink: var(--color-pink-500);
   --color-fg-lime: var(--color-lime-500);
- 
+
    /* background color variables */
   --color-neutral-primary-soft: var(--color-slate-900);
   --color-neutral-primary: var(--color-slate-950);
@@ -190,9 +190,6 @@
   --color-warning: var(--color-orange-600);
   --color-warning-medium: var(--color-orange-900);
   --color-warning-strong: var(--color-orange-700);
-  --color-dark-soft: var(--color-gray-700);
-  --color-dark: var(--color-gray-800);
-  --color-dark-strong: var(--color-gray-700);
   --color-disabled: var(--color-gray-800);
   --color-purple: var(--color-purple-500);
   --color-sky: var(--color-sky-500);
@@ -208,9 +205,6 @@
   --color-buffer-medium: var(--color-gray-900);
   --color-buffer-strong: var(--color-gray-800);
   --color-muted: var(--color-gray-900);
-  --color-light-subtle: var(--color-gray-900);
-  --color-light: var(--color-gray-800);
-  --color-light-medium: var(--color-gray-700);
   --color-default-subtle: var(--color-gray-900);
   --color-default: var(--color-gray-800);
   --color-default-medium: var(--color-gray-700);
