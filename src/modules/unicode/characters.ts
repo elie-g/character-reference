@@ -35,7 +35,7 @@ export class UnicodeCharacter {
     return this.raw.characterName.startsWith('<') && this.raw.unicode1Name
       ? this.raw.unicode1Name : this.raw.characterName;
   }
-  
+
   get character(): string { return String.fromCodePoint(this.code); }
 
   get codePoints(): ReadonlyArray<number> {
@@ -127,6 +127,7 @@ function fetchCharacters(): Promise<ReadonlyArray<UnicodeRawCharacter>> {
     .then((csv: string): UnicodeRawCharacter[] => {
       return csv.split(/\r?\n/g)
         .map((ln: string): string[] => ln.split(';'))
+        .filter((cols: string[]) => cols.length > 5 && !cols[0].startsWith('#'))
         .map((cols: string[]): UnicodeRawCharacter => {
           const v = (i: number): string | null => cols[i].trim() || null;
           return {
