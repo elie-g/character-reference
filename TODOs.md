@@ -8,15 +8,17 @@
 - [ ] Move font selection outside filters (e.g. to an options/config drawer)
 - [ ] Add copy button on each character
 - [ ] Add more character details :
-  - [ ] `char.name`
-  - [ ] `char.character`
+  - [x] `char.name`
+  - [x] `char.character`
+  - [x] `char.block`
+  - [x] `char.category`
   - [x] `char.code`
   - [x] `char.codePoints`
-  - [ ] `char.decimalDigitValue`
-  - [ ] `char.digitValue`
-  - [ ] `char.numericValue`
+  - [x] `char.decimalDigitValue`
+  - [x] `char.digitValue`
+  - [x] `char.numericValue`
   - [ ] `char.mirrored`
-  - [ ] `char.alias`
+  - [x] `char.alias`
   - [ ] `char.uppercaseCharacter`
   - [ ] `char.lowercaseCharacter`
   - [ ] `char.titlecaseCharacter`

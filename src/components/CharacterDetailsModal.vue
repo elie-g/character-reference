@@ -4,10 +4,11 @@ import { Modal } from 'flowbite'
 import { nextFrame } from '@/modules/utils'
 import { UnicodeCharacter } from '@/modules/unicode'
 import NumbersField from './details/NumbersField.vue'
+import TextField from './details/TextField.vue'
 
 export default {
   name: 'CharacterDetailsModal',
-  components: { NumbersField },
+  components: { NumbersField, TextField },
   props: {
     font: {
       type: String,
@@ -78,10 +79,10 @@ export default {
     :aria-hidden="visible"
     aria-modal="true"
     role="dialog"
-    class="hidden overflow-y-auto overflow-x-hidden fixed w-max xl:min-w-lg max-w-[calc] m-auto top-0 right-0 left-0 z-50 justify-center items-center md:inset-0 h-[calc(100%-1rem)] max-h-full"
+    class="hidden overflow-hidden fixed w-max xl:min-w-lg max-w-full h-[calc(100%-1rem)] max-h-full m-auto top-0 right-0 left-0 z-50 justify-center items-center md:inset-0"
   >
-    <div class="relative p-4 w-full max-w-2x1 max-h-full">
-      <div class="relative bg-neutral-primary-soft border border-default rounded-base shadow-sm p-4 md:p-6">
+    <div class="relative p-4 w-full max-w-max max-h-full">
+      <div class="relative bg-neutral-primary-soft border border-default rounded-base shadow-sm p-2 md:p-4">
         <!-- Header -->
         <div class="flex items-center justify-between border-b border-default pb-4 md:pb-5">
           <h3 class="text-lg font-medium text-heading">
@@ -104,11 +105,38 @@ export default {
         </div>
 
           <!-- Modal body -->
-        <div class="space-y-4 md:space-y-6 py-4 md:py-6">
+        <div class="space-y-2 md:space-y-4 py-4 md:py-6 w-full overflow-auto">
 
+          <!-- Character -->
+          <text-field
+            label="Character:"
+            :value="char.character"
+          />
 
-          <!-- TODO char.name -->
-          <!-- TODO char.character -->
+          <!-- Name -->
+          <text-field
+            label="Name:"
+            :value="char.name"
+          />
+
+          <!-- Alias-->
+          <text-field
+            v-if="char.alias"
+            label="Alias:"
+            :value="char.alias"
+          />
+
+          <!-- Block -->
+          <text-field
+            label="Block:"
+            :value="`${char.block.desc} (${char.block.from.toString(16).toUpperCase().padStart(4, '0')} - ${char.block.to.toString(16).toUpperCase().padStart(4, '0')})`"
+          />
+
+          <!-- Category -->
+          <text-field
+            label="Category:"
+            :value="`${char.category.abbr} (${char.category.desc})`"
+          />
 
           <!-- Code -->
           <numbers-field
@@ -122,11 +150,28 @@ export default {
             :values="char.codePoints"
           />
 
-          <!-- TODO char.decimalDigitValue -->
-          <!-- TODO char.digitValue -->
-          <!-- TODO char.numericValue -->
+          <!-- Decimal digit value -->
+          <text-field
+            v-if="char.decimalDigitValue != null"
+            label="Decimal digit value:"
+            :value="char.decimalDigitValue.toString()"
+          />
+
+          <!-- Digit value -->
+          <text-field
+            v-if="char.digitValue != null"
+            label="Digit value:"
+            :value="char.digitValue.toString()"
+          />
+
+          <!-- Numeric value -->
+          <text-field
+            v-if="char.numericValue != null"
+            label="Numeric value:"
+            :value="char.numericValue.toString()"
+          />
+
           <!-- TODO char.mirrored -->
-          <!-- TODO char.alias -->
           <!-- TODO char.uppercaseCharacter -->
           <!-- TODO char.lowercaseCharacter -->
           <!-- TODO char.titlecaseCharacter -->

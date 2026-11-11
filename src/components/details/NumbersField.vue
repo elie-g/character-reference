@@ -39,7 +39,7 @@ export default defineComponent({
     this.destroy();
     this.init();
   },
-  unmounted() { this.destroy(); },
+  beforeUnmount() { this.destroy(); },
 
   methods: {
     init() {
@@ -126,7 +126,7 @@ export default defineComponent({
       <button
         type="button"
         @click="hex = !hex"
-        class="inline-flex items-center ps-3 pe-1.5 font-bold text-sm text-body-subtle bg-neutral-secondary-soft border rounded-e-0 border-default-medium border-e-0 rounded-s-base cursor-pointer hover:text-body hover:bg-neutral-secondary-strong focus:ring-0"
+        class="inline-flex items-center ps-2 pe-1.5 font-bold text-sm text-body-subtle bg-neutral-secondary-soft border rounded-e-0 border-default-medium border-e-0 rounded-s-base cursor-pointer hover:text-body hover:bg-neutral-secondary-strong focus:ring-0"
       >
         <small style="line-height:normal; width:2ch">
           {{ hex ? '0x' : '10' }}
@@ -138,15 +138,16 @@ export default defineComponent({
           ref="input"
           :id="`${localId}-input-${idx}`"
           :value="val.toString(hex ? 16 : 10).toUpperCase()"
-          :class="`${hex ? 'font-mono' : 'font-sans'} peer inline-block field-sizing-content w-full ps-2 pr-1 py-2.5 bg-neutral-secondary-medium border border-default-medium border-e-0 text-heading text-sm placeholder:text-body focus:ring-0 focus:border-brand focus:shadow-none`"
+          :class="`${hex ? 'font-mono' : 'font-sans'} peer inline-block field-sizing-content w-full ps-2 pr-1 py-1.5 bg-neutral-secondary-medium border border-default-medium border-e-0 text-heading text-sm placeholder:text-body focus:ring-0 focus:border-brand focus:shadow-none`"
           readonly
         />
         <div :class="`inline-flex items-center justify-center pe-1 py-1/2 rounded-base rounded-s-0 ${idx >= values.length - 1 ? '' : 'rounded-e-0 border-e-0'} border border-default-medium border-s-0 bg-neutral-secondary-medium peer-focus:border-brand`">
           <button
+            type="button"
             ref="copy-to-clipboard"
             :data-copy-to-clipboard-target="`${localId}-input-${idx}`"
             :data-tooltip-target="`${localId}-input-${idx}-copy-tooltip`"
-            class="group text-body cursor-pointer rounded p-1.5 inline-flex items-center justify-center hover:bg-neutral-quaternary"
+            class="group text-body cursor-pointer rounded px-1 py-1/2 inline-flex items-center justify-center hover:bg-neutral-quaternary"
           >
             <span class="relative">
               <span class="transition-opacity duration-300 opacity-100 group-[.success]:opacity-0">
