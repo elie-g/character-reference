@@ -38,7 +38,7 @@ export default defineComponent({
   },
 
   data() {
-    const data = {
+    return {
       grid: useTemplateRef<VGridHandle>('grid'),
       characterDetailsModal: useTemplateRef<typeof CharacterDetailsModal>('characterDetailsModal'),
       context: shallowRef({
@@ -46,8 +46,7 @@ export default defineComponent({
         rows: [] as CharacterType[][],
         cellWidth: CHAR_BASE_SIZE,
       }),
-    }
-    return data;
+    };
   },
 
   mounted() {

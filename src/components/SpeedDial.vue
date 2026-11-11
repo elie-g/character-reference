@@ -1,11 +1,35 @@
 <script lang="ts">
-export default {
+import { defineComponent, ref, useTemplateRef, useId } from 'vue'
+import { useMediaQuery } from '@vueuse/core'
+import { Dial } from 'flowbite'
+
+export default defineComponent({
   name: 'SpeedDial',
   emits: [ 'filter:click' ],
   data() {
     return {
+      _dial: ref<Dial | null>(null),
+      instanceId: useId(),
+      menu: useTemplateRef<HTMLElement>('speed-dial-menu'),
+      toggleButton: useTemplateRef<HTMLElement>('speed-dial-button'),
       dark: document.documentElement.classList.contains('dark'),
+      canHover: useMediaQuery('(hover: hover)'),
+      initialized: false,
+      visible: false,
     };
+  },
+
+  computed: {
+    dial(): Dial {
+      if (this._dial == null) {
+        this.initDial();
+      }
+      return this._dial!;
+    }
+  },
+
+  mounted() {
+    this.initDial();
   },
 
   watch: {
@@ -14,16 +38,38 @@ export default {
       const { classList } = document.documentElement;
       classList.toggle('dark', dark);
       classList.toggle('light', !dark);
-    }
+    },
+    canHover: 'initDial',
   },
-}
+
+  methods: {
+    initDial() {
+      this._dial = new Dial(this.$el, this.toggleButton, this.menu, {
+        triggerType: this.canHover ? 'hover' : 'none',
+        onShow: () => this.visible = true,
+        onHide: () => this.visible = false,
+        onToggle: () => this.visible = this.dial.isVisible()
+      }, {
+        id: this.instanceId,
+        override: true
+      });
+      this.initialized = true;
+    },
+    toggleDial() {
+      if (!this.canHover) {
+        this.dial.toggle();
+      }
+    }
+  }
+})
 </script>
 
 <template>
-  <div data-dial-init class="fixed inset-e-6 bottom-6 group">
+  <div :data-dial-visible="visible" class="fixed inset-e-6 bottom-6 group">
     <div
-      id="speed-dial-menu"
-      class="hidden flex-col items-center space-y-2 group-hover:flex"
+      ref="speed-dial-menu"
+      :id="instanceId"
+      class="flex hidden flex-col items-center space-y-2"
     >
 
       <!-- Theme -->
@@ -35,6 +81,8 @@ export default {
       />
       <label
         for="theme-checkbox"
+        data-tooltip-target="tooltip-theme"
+        data-tooltip-placement="left"
         class="flex justify-center items-center size-10 cursor-pointer text-body hover:text-heading bg-neutral-primary-soft rounded-full border border-default shadow-xs hover:bg-neutral-secondary-medium hover:border-default-medium focus:ring-4 focus:ring-neutral-secondary-soft focus:outline-none peer-checked:border-brand-subtle peer-checked:bg-brand-softer peer-checked:text-fg-brand-strong peer-checked:hover:bg-brand-softer"
       >
         <font-awesome-icon icon="circle-half-stroke" />
@@ -70,13 +118,26 @@ export default {
     </div>
     <button
       type="button"
-      data-dial-toggle="speed-dial-menu"
+      ref="speed-dial-button"
       aria-controls="speed-dial-menu"
       aria-expanded="false"
+      @click="toggleDial"
       class="flex items-center justify-center text-white bg-brand rounded-full w-10 h-10 cursor-pointer hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium focus:outline-none"
     >
-      <font-awesome-icon icon="fa-plus" class="transition-transform group-hover:rotate-45"/>
+      <font-awesome-icon
+        icon="fa-plus"
+        :class="{
+          'transition-transform': true,
+          'rotate-45': visible
+        }"
+      />
       <span class="sr-only">Open actions menu</span>
     </button>
   </div>
 </template>
+
+<style scoped>
+/**div[data-dial]:focus-within > #speed-dial-menu {
+  display: flex;
+}/**/
+</style>

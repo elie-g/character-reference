@@ -1,11 +1,12 @@
 <script lang="ts">
 import { PropType, defineComponent } from 'vue';
 import { UnicodeCharacter } from '@/modules/unicode'
+import { useMediaQuery } from '@vueuse/core';
 import type { Character } from '@/modules/entities'
-import {  } from '@fortawesome/vue-fontawesome'
 
 export default defineComponent({
   name: 'Character',
+  emits: [ 'details-button:click' ],
   props: {
     char: {
       type: Object as PropType<Character>,
@@ -16,7 +17,12 @@ export default defineComponent({
       type: String
     },
   },
-  emits: [ 'details-button:click' ],
+
+  data() {
+    return {
+      canHover: useMediaQuery('(hover: hover)'),
+    }
+  },
 
   computed: {
     fontFamily() {
@@ -34,7 +40,7 @@ export default defineComponent({
 </script>
 
 <template>
-<div class="group relative w-full text-center aspect-square bg-neutral-secondary-soft text-body rounded-lg px-1 py-2">
+<div class="group relative w-full text-center aspect-square bg-neutral-secondary-soft text-body rounded-lg px-1 py-2" @click="() => canHover ? void 0 : showDetails()">
   <div
     :style="{ fontFamily }"
     class="transition-[font-size] text-5xl group-hover:text-xl">

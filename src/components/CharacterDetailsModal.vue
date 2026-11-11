@@ -78,7 +78,7 @@ export default {
     :aria-hidden="visible"
     aria-modal="true"
     role="dialog"
-    class="hidden overflow-y-auto overflow-x-hidden fixed w-max min-w-lg m-auto top-0 right-0 left-0 z-50 justify-center items-center md:inset-0 h-[calc(100%-1rem)] max-h-full"
+    class="hidden overflow-y-auto overflow-x-hidden fixed w-max xl:min-w-lg max-w-[calc] m-auto top-0 right-0 left-0 z-50 justify-center items-center md:inset-0 h-[calc(100%-1rem)] max-h-full"
   >
     <div class="relative p-4 w-full max-w-2x1 max-h-full">
       <div class="relative bg-neutral-primary-soft border border-default rounded-base shadow-sm p-4 md:p-6">
@@ -88,7 +88,7 @@ export default {
             Character:
             <kbd
               :style="{ fontFamily }"
-              class="px-2 py-1.5 text-xl font-normal bg-neutral-tertiary border border-default-medium rounded-base"
+              class="px-2 py-1.5 text-xl ms-[1ch] font-normal bg-neutral-tertiary border border-default-medium rounded-base"
             >
               {{ char.character }}
             </kbd>
